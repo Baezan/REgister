@@ -13,8 +13,10 @@ class NewUserForm(UserCreationForm):
 
     def save(self,commit=True):
         user = super(NewUserForm,self).save(commit=False)
+        print(user)
         user.email = self.cleaned_data['email']
         user.company = self.cleaned_data['company']
+        # print('message cleaned data' + self.cleaned_data)
         if commit:
             user.save()
 

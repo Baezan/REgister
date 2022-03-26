@@ -39,15 +39,26 @@ def LogoutPage(request):
 def register(request):
    
     if request.method == 'POST':
-        form = NewUserForm(request.POST)
-        if form.is_valid():
-            user = form.save()
-            login(request,user)
-            return redirect('baseapp:welcome')
-        else:
-            messages.error(request,'Unsuccessful registration, Invalid information')
-    form = NewUserForm()            
-    return render(request,'baseapp/register_login.html',{'form':form})
+        username = request.POST.get('username')
+        email = request.POST.get('email')
+        password1 = request.POST.get('password1')
+        password2 = request.POST.get('password2')
+        user = User.objects.create(username=username,email=email,password=password1)
+        user.set_password(password1)
+        user.save()
+        return redirect('baseapp:welcome')
+
+        # form = NewUserForm(request.POST)
+        # if form.is_valid():
+        #     user = form.save()
+        #     login(request,user)
+        #     return redirect('baseapp:welcome')
+        # else:
+        #     messages.error(request,'Unsuccessful registration, Invalid information')
+        #     print(form.errors)
+    # form = NewUserForm()            
+    # return render(request,'baseapp/register_login.html',{'form':form})
+    return render(request,'baseapp/register_login.html',{})
 
 @login_required(login_url='baseapp:login')
 def welcome(request):

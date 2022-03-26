@@ -20,7 +20,17 @@
 {%else%}
     <form action="" method="POST">
         {%csrf_token%}
-        {{form.as_p}}
+        <label for="">Username:</label>
+        <input type="text" name="username" placeholder="username">
+
+        <label for="">email:</label>
+        <input type="text" name="email" placeholder="email">
+        
+        <label for="">Password:</label>
+        <input type="password" name="password1" placeholder="password">
+        
+        <label for="">Password:</label>
+        <input type="password" name="password2" placeholder="password">
 
         <input type="submit" value="register">
     </form>

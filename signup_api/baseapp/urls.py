@@ -4,6 +4,10 @@ from . import views
 app_name = 'baseapp'
 urlpatterns = [
     path('',views.home, name='home'),
+<<<<<<< HEAD
+=======
+    # path('',views.LoginPage,name='login'),
+>>>>>>> origin
     path('login/',views.LoginPage,name='login'),
     path('register/',views.register,name='register'),
     path('welcome/',views.welcome,name='welcome'),

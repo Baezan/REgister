@@ -1,6 +1,6 @@
 from django.shortcuts import redirect, render
 from django.contrib import messages
-from .models import User
+from .models import Courses, User
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
@@ -34,7 +34,7 @@ def LoginPage(request):
 
 def LogoutPage(request):
     logout(request)
-    return redirect('baseapp:home')
+    return redirect('baseapp:login')
 
 def register(request):
    
@@ -62,4 +62,9 @@ def register(request):
 
 @login_required(login_url='baseapp:login')
 def welcome(request):
-    return render(request,'baseapp/welcome.html',{'request':request})
+    userId = request.user.id
+    print(userId)
+    courses = Courses.objects.filter(student = userId)
+    
+    context = {'courses':courses,'request':request}
+    return render(request,'baseapp/welcome.html',context)

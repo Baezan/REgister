@@ -1,0 +1,33 @@
+[
+    {
+        "id":"1",
+        "course name":"physics",
+        "course fee":"10000",
+        "Teacher":"Prince sir"
+
+    },
+    {
+        "id":"2",
+        "course name":"chemistry",
+        "course fee":"5000",
+        "Teacher":"Prince sir"
+    },
+    {
+        "id":"3",
+        "course name":"biology",
+        "course fee":"17000",
+        "Teacher":"Faiz ur Rahaman"
+    },
+    {
+        "id":"4",
+        "course name":"mathematics",
+        "course fee":"19000",
+        "Teacher":"Owais sir"
+    },
+    {
+        "id":"5",
+        "course name":"Information Practics",
+        "course fee":"3000",
+        "Teacher":"Sana mam"
+    }
+]

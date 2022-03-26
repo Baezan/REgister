@@ -34,7 +34,7 @@ def LoginPage(request):
 
 def LogoutPage(request):
     logout(request)
-    return redirect('baseapp:home')
+    return redirect('baseapp:login')
 
 def register(request):
    

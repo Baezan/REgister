@@ -1,40 +1,75 @@
 {% if messages %}
 <ul class="messages">
     {% for message in messages %}
-    <li>{{ message }}</li>
     {% endfor %}
 </ul>
 {% endif %}
+<head>
+<link rel="stylesheet" href="/static/base.css">
+</head>
+<body>
+
 
 {%if page == 'login'%}
-    <form action="" method="post">
+<div class="container">
+    <div class="left">
+    <a href=""><img src="/static/media/logo.png" alt="id not found"></a>
+    <div>
+            Student Diary
+        </div>
+    <form class="form" method="post" action="">
         {%csrf_token%}
-        <label for="">Username:</label>
-        <input type="text" name="username" placeholder="username">
-        <label for="">Password:</label>
-        <input type="password" name="password" placeholder="password">
-        <input type="submit" value="login">
+        <h1 class="form__title">Login</h1>
+        <div class="form__message form__message--error"></div>
+
+        <div class="form__input-group"> 
+            <input type="text" class="form__input" id="username"name="username" autofocus placeholder="Username">
+            <div class="form__input-error-message"></div>
+        </div>
+        <div class="form__input-group">
+            <input type="password" class="form__input" name="password" autofocus placeholder="Password">
+            <div class="form__input-error-message"></div>
+        </div>
+        <button class="form__button" type="submit" value="login"> Login</button>
+        <div style="color: darkred;" class="form__input-group">
+            {% if messages %}
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+     
+        </div>
+{% endif %}
     </form>
-    <p>Haven't signed up yet?</p>
-    <a href="{% url 'baseapp:register' %}">register</a>
+    <p>Haven't signed up yet?
+    <a id="linkCreateAccount" class="form__link" href="{% url 'baseapp:register' %}">register</a></p>
 {%else%}
-    <form action="" method="POST">
+<form method="post" action=""class="form" id="createAccount">
         {%csrf_token%}
-        <label for="">Username:</label>
-        <input type="text" name="username" placeholder="username">
-
-        <label for="">email:</label>
-        <input type="text" name="email" placeholder="email">
-        
-        <label for="">Password:</label>
-        <input type="password" name="password1" placeholder="password">
-        
-        <label for="">Password:</label>
-        <input type="password" name="password2" placeholder="password">
-
-        <input type="submit" value="register">
+        <h1 class="form__title">Create Account</h1>
+        <div class="form__message form__message--error"></div>
+        <div class="form__input-group">
+            <input type="text" id="signupUsername" class="form__input" name="username" autofocus placeholder="Username">
+            <div class="form__input-error-message"></div>
+        </div>
+        <div class="form__input-group">
+            <input type="text" class="form__input" name="email" autofocus placeholder="Email Address">
+            <div class="form__input-error-message"></div>
+        </div>
+        <div class="form__input-group">
+            <input type="password" class="form__input" name="password1" autofocus placeholder="Password">
+            <div class="form__input-error-message"></div>
+        </div>
+        <div class="form__input-group">
+            <input type="password" class="form__input" name="passoword2"autofocus placeholder="Confirm password">
+            <div class="form__input-error-message"></div>
+        </div>
+        <button class="form__button " type="submit" value="register">Sign Up</button>
+        <p>Already signed up?
+    <a class="form__link" id="linkLogin" href="{% url 'baseapp:login'%}">login</a></p>
     </form>
+    
 
-    <p>Already signed up Login</p>
-    <a href="{% url 'baseapp:login'%}">login</a>
+   
 {%endif%}
+</body>
+<script type="text/javascript" src="{{ STATIC_URL }} /static/base.js"></script>

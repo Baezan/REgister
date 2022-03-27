@@ -5,12 +5,37 @@
     {% endfor %}
 </ul>
 {% endif %}
+<head>
+    <link rel="stylesheet" href="/static/welcome.css">
+</head>
+<body>
+<p style="border: 2px solid;padding: 3px; color: azure; font-weight: bold;" >Welcome {{request.user}}!</p>
+{% comment %} <p>Welcome {{request.user}} {{request.user.id}}</p> {% endcomment %}
 
 
-<p>welcome {{request.user}} {{request.user.id}}</p>
+<div style="position: absolute;top: 100px; border: 5px dotted rgb(211, 80, 123);padding: 50px;">
+    <table style="color: whitesmoke;">
+        <thead>
+            <tr>
+            YOU'RE ENROLLED UNDER:
+            </tr>
+        </thead>
+        <tbody">
+            <tr>
+                <th>
+                
+                    {%for course in courses%}
+                    <li>{{course.courseName}}</li>
+                    {% endfor %}
+        
+                </th>
+            </tr>
+        </tbody>
+    </table>
 
-
-{%for course in courses%}
-    <li>{{course.courseName}}</li>
-{% endfor %}
-<a href="{% url 'baseapp:logout'%}">logout</a>
+</div>
+<div  style="position: absolute; top: 5px; left: 100px;" >
+<a style=" color: bisque;" href="{% url 'baseapp:logout'%}">LogOut</a>
+</div>
+</body>
+<script type="text/javascript" src="{{ STATIC_URL }} /static/welcome.js"></script>

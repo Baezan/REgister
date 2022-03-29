@@ -5,6 +5,9 @@ from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from .forms import NewUserForm
+from .serializer import CourseSerializer
+from rest_framework.views import APIView
+from rest_framework.response import Response
 # Create your views here.
 def home(request):
     context = {}
@@ -64,7 +67,26 @@ def register(request):
 def welcome(request):
     userId = request.user.id
     print(userId)
-    courses = Courses.objects.filter(student = userId)
+    # courses = Courses.objects.filter(student = userId)
     
-    context = {'courses':courses,'request':request}
-    return render(request,'baseapp/welcome.html',context)
+    context = {'request':request}
+    return render(request,'baseapp/welcome.html',context)  
+
+
+class CourseView(APIView):
+    # def post(self,request):
+    #     userID = getuserId(request)
+    #     request.data['student'] = userID
+    #     data = request.data
+    #     serializer = CourseSerializer(data=data)
+    #     serializer.is_valid(raise_exception=True)
+    #     serializer.save()
+    #     return Response(serializer.data)
+
+    def get(self,request):
+        userID = request.user.id
+        print(userID)
+        data = Courses.objects.filter(student = userID)
+        serializer  = CourseSerializer(data,many = True)
+      
+        return Response(serializer.data)

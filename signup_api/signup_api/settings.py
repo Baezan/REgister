@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'baseapp.apps.BaseappConfig',
+    'rest_framework'
+
 ]
 
 MIDDLEWARE = [
@@ -80,8 +82,13 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'projectdatabase',
+<<<<<<< HEAD
         'USER': 'baezan',
         'PASSWORD': 'cmpiyc',
+=======
+        'USER': 'root',
+        'PASSWORD': 'Tahoor013@',
+>>>>>>> origin
         'HOST':'localhost',
         'PORT':'3306',
     }

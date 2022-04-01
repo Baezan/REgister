@@ -8,12 +8,11 @@
 <link rel="stylesheet" href="/static/base.css">
 </head>
 <body>
-
-
+        
 {%if page == 'login'%}
 <div class="container">
     <div class="left">
-    <a href=""><img src="/static/media/logo.png" alt="id not found"></a>
+    <a href="{% url 'baseapp:home'%}"><img src="/static/media/logo.png" alt="id not found"></a>
     <div>
             Student Diary
         </div>

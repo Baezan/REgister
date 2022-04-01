@@ -13,23 +13,21 @@
 {% comment %} <p>Welcome {{request.user}} {{request.user.id}}</p> {% endcomment %}
 
 
-<div style="position: absolute;top: 100px; border: 5px dotted rgb(211, 80, 123);padding: 50px;">
+<div style="position: absolute;top: 100px; border: 5px dotted rgb(211, 80, 123);padding: 5px;">
     <table style="color: whitesmoke;">
         <!-- <thead>
-            <tr>
             <th>Course Name</th>
             <th>Course Fee</th>
             <th>Course Teacher</th>
-            </tr>
         </thead> -->
         <tbody>
             <tr>
-                <th id="course">
+                <td id="course">
                     <!-- {%for course in courses%}
                     <li>{{course.courseName}}</li>
                     {% endfor %} -->
         
-                </th>
+                </td>
             </tr>
         </tbody>
     </table>

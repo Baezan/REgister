@@ -1,18 +1,35 @@
+from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from django.contrib import messages
-from .models import Courses, User
+from .models import Courses, User,CoursesInstances
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from .forms import NewUserForm
-from .serializer import CourseSerializer
+from .serializer import CourseSerializer,CourseInstanceSerializer
 from rest_framework.views import APIView
+from rest_framework.decorators import api_view
 from rest_framework.response import Response
+
+
 # Create your views here.
 def home(request):
     context = {}
     return render(request,'baseapp/home.html',context)
 
+@api_view(('GET',))
+def getcourses(request):
+    # data= Courses.objects.all().distinct()
+    # data = Courses.objects.distinct()
+    # data = Courses.objects.values('pk','courseName','courseFee','courseTeacher','student').distinct()
+    # print(data)
+    # data = Courses.objects.all().distinct('courseName').order_by('courseName')
+
+    # data = Courses.objects.values().distinct()
+
+    data = CoursesInstances.objects.all()
+    serializer = CourseInstanceSerializer(data,many=True)
+    return Response(serializer.data)
 
 def LoginPage(request):
     page = 'login'
@@ -74,14 +91,14 @@ def welcome(request):
 
 
 class CourseView(APIView):
-    # def post(self,request):
-    #     userID = getuserId(request)
-    #     request.data['student'] = userID
-    #     data = request.data
-    #     serializer = CourseSerializer(data=data)
-    #     serializer.is_valid(raise_exception=True)
-    #     serializer.save()
-    #     return Response(serializer.data)
+    def post(self,request):
+        userID = request.user.id
+        request.data['student'] = userID
+        data = request.data
+        serializer = CourseSerializer(data=data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data)
 
     def get(self,request):
         userID = request.user.id

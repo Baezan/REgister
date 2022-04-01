@@ -7,3 +7,12 @@ class Courses(models.Model):
     courseName = models.CharField(max_length=200)
     courseFee = models.FloatField(null=True)
     courseTeacher = models.CharField(max_length=200)
+    description = models.TextField(null=True)
+
+
+class CoursesInstances(models.Model):
+    
+    courseName = models.CharField(max_length=200)
+    courseFee = models.FloatField(null=True)
+    courseTeacher = models.CharField(max_length=200)
+    description = models.TextField(null=True)

@@ -10,7 +10,9 @@ from .serializer import CourseSerializer,CourseInstanceSerializer,CourseNamesSer
 from rest_framework.views import APIView
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.csrf import csrf_exempt,ensure_csrf_cookie
+from django.utils.decorators import method_decorator
+# from django.views.decorators.csrf import ensure_csrf_cookie
 
 
 
@@ -36,6 +38,7 @@ def getcourses(request):
     serializer = CourseInstanceSerializer(data,many=True)
     return Response(serializer.data)
 
+@ensure_csrf_cookie
 def LoginPage(request):
     page = 'login'
     if request.user.is_authenticated:
@@ -86,6 +89,7 @@ def register(request):
     return render(request,'baseapp/register_login.html',{})
 
 @login_required(login_url='baseapp:login')
+@ensure_csrf_cookie
 def welcome(request):
     userId = request.user.id
     print(userId)
@@ -94,13 +98,12 @@ def welcome(request):
     context = {'request':request}
     return render(request,'baseapp/welcome.html',context)  
     
-
+# @method_decorator(csrf_exempt, name='dispatch')
 class CourseView(APIView):
-<<<<<<< HEAD
-    @csrf_exempt
-=======
-  
->>>>>>> b5aa70b504b530245aaa35a9b873ae4b35b8e1c3
+    # @method_decorator(csrf_exempt)
+    # def dispatch(self, request, *args, **kwargs):
+    #     return super(CourseView, self).dispatch(request, *args, **kwargs)
+
     def post(self,request):
         userID = request.user.id
         request.data['student'] = userID
@@ -134,13 +137,14 @@ def getCourseNames(request):
 
     return Response(serializer.data)
 
-@api_view(('POST',))
-@csrf_exempt
-def postCourse(request):
-    userID = request.user.id
-    request.data['student'] = userID
-    data = request.data
-    serializer = CourseSerializer(data=data)
-    serializer.is_valid(raise_exception=True)
-    serializer.save()
-    return Response(serializer.data)
+
+# @api_view(('POST',))
+# @csrf_exempt
+# def postCourse(request):
+#     userID = request.user.id
+#     request.data['student'] = userID
+#     data = request.data
+#     serializer = CourseSerializer(data=data)
+#     serializer.is_valid(raise_exception=True)
+#     serializer.save()
+#     return Response(serializer.data)

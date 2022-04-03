@@ -26,3 +26,9 @@ class CourseInstanceSerializer(serializers.ModelSerializer):
     class Meta:
         model = CoursesInstances
         fields = '__all__'
+
+
+class CourseNamesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Courses
+        fields = ('courseName',)

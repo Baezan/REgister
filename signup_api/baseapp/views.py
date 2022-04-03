@@ -6,10 +6,12 @@ from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from .forms import NewUserForm
-from .serializer import CourseSerializer,CourseInstanceSerializer
+from .serializer import CourseSerializer,CourseInstanceSerializer,CourseNamesSerializer
 from rest_framework.views import APIView
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from django.views.decorators.csrf import csrf_exempt
+
 
 
 # Create your views here.
@@ -91,6 +93,7 @@ def welcome(request):
 
 
 class CourseView(APIView):
+    @csrf_exempt
     def post(self,request):
         userID = request.user.id
         request.data['student'] = userID
@@ -107,3 +110,30 @@ class CourseView(APIView):
         serializer  = CourseSerializer(data,many = True)
       
         return Response(serializer.data)
+
+
+
+
+@api_view(('GET',))
+def getCourseNames(request):
+    userID = request.user.id
+    coursenames = Courses.objects.filter(student = userID).values('courseName')
+    # lis = []
+    # for i in coursenames:
+    #     print(i['courseName'])
+    #     lis.append(i['courseName'])
+        
+    serializer  = CourseNamesSerializer(coursenames,many = True)
+
+    return Response(serializer.data)
+
+@api_view(('POST',))
+@csrf_exempt
+def postCourse(request):
+    userID = request.user.id
+    request.data['student'] = userID
+    data = request.data
+    serializer = CourseSerializer(data=data)
+    serializer.is_valid(raise_exception=True)
+    serializer.save()
+    return Response(serializer.data)

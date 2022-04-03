@@ -12,6 +12,9 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
 
+
+
+
 # Create your views here.
 def home(request):
     context = {}
@@ -88,9 +91,10 @@ def welcome(request):
     
     context = {'request':request}
     return render(request,'baseapp/welcome.html',context)  
-
+    
 
 class CourseView(APIView):
+  
     def post(self,request):
         userID = request.user.id
         request.data['student'] = userID

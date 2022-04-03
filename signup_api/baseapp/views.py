@@ -14,6 +14,9 @@ from django.views.decorators.csrf import csrf_exempt
 
 
 
+
+
+
 # Create your views here.
 def home(request):
     context = {}
@@ -90,10 +93,14 @@ def welcome(request):
     
     context = {'request':request}
     return render(request,'baseapp/welcome.html',context)  
-
+    
 
 class CourseView(APIView):
+<<<<<<< HEAD
     @csrf_exempt
+=======
+  
+>>>>>>> b5aa70b504b530245aaa35a9b873ae4b35b8e1c3
     def post(self,request):
         userID = request.user.id
         request.data['student'] = userID

@@ -81,3 +81,95 @@ const csrftoken = getCookie('csrftoken');
         //   });
     });
     
+    cpp.addEventListener('click', function postData(){
+
+        url ='http://127.0.0.1:8000/api/course/';
+        data = '{"courseName":"C++","courseFee":"15000","courseTeacher":"Usma Niyaz","description":"added the course"}'
+        params = {
+            method:"POST",
+            headers: {
+                'Content-Type': 'application/json;odata=verbose',
+                'X-CSRFToken': csrftoken
+            
+    
+                
+              },
+    
+            body: data
+        }
+        fetch(url, params).then(response=> response.json())
+        .then((data) => {
+        
+            console.log(data);
+           
+        })
+    });
+    netw.addEventListener('click', function postData(){
+
+        url ='http://127.0.0.1:8000/api/course/';
+        data = '{"courseName":"Networking","courseFee":"70000","courseTeacher":"Iqra Altaf","description":"added the course"}'
+        params = {
+            method:"POST",
+            headers: {
+                'Content-Type': 'application/json;odata=verbose',
+                'X-CSRFToken': csrftoken
+            
+    
+                
+              },
+    
+            body: data
+        }
+        fetch(url, params).then(response=> response.json())
+        .then((data) => {
+        
+            console.log(data);
+           
+        })
+    });
+    micro.addEventListener('click', function postData(){
+
+        url ='http://127.0.0.1:8000/api/course/';
+        data = '{"courseName":"Microprocessor 8085","courseFee":"9000","courseTeacher":"Janib Bashir","description":"added the course"}'
+        params = {
+            method:"POST",
+            headers: {
+                'Content-Type': 'application/json;odata=verbose',
+                'X-CSRFToken': csrftoken
+            
+    
+                
+              },
+    
+            body: data
+        }
+        fetch(url, params).then(response=> response.json())
+        .then((data) => {
+        
+            console.log(data);
+           
+        })
+    });
+    js.addEventListener('click', function postData(){
+
+        url ='http://127.0.0.1:8000/api/course/';
+        data = '{"courseName":"Javascript","courseFee":"9000","courseTeacher":"Harry","description":"added the course"}'
+        params = {
+            method:"POST",
+            headers: {
+                'Content-Type': 'application/json;odata=verbose',
+                'X-CSRFToken': csrftoken
+            
+    
+                
+              },
+    
+            body: data
+        }
+        fetch(url, params).then(response=> response.json())
+        .then((data) => {
+        
+            console.log(data);
+           
+        })
+    });

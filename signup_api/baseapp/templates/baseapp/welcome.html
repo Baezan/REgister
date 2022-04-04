@@ -5,17 +5,22 @@
     {% endfor %}
 </ul>
 {% endif %}
-{% comment %} <meta name="csrf-token" content=" {%csrf_token%}"> {% endcomment %}
+{% comment %}
+<meta name="csrf-token" content=" {%csrf_token%}"> {% endcomment %}
+
 <head>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
     <link rel="stylesheet" href="/static/welcome.css">
 </head>
+
 <body>
-<p style="border: 2px solid;padding: 3px; color: azure; font-weight: bold;" >Welcome {{request.user}}!</p>
-{% comment %} <p>Welcome {{request.user}} {{request.user.id}}</p> {% endcomment %}
+    <p style="border: 2px solid;padding: 3px; color: azure; font-weight: bold;">Welcome {{request.user}}!</p>
+    {% comment %} <p>Welcome {{request.user}} {{request.user.id}}</p> {% endcomment %}
 
 
+<<<<<<< HEAD
 <div  class="dropdown" style="position: absolute; right: 100px;" >
     <button class="dropbtn">Add Course</button>
     <div class="dropdown-content">
@@ -24,36 +29,46 @@
       <a  id="netwo" >Networking</a>
       <a  id="micro">Microprocessor 8085</a>
       <a id="js">Javascript</a>
+=======
+    <div class="dropdown" style="position: absolute; right: 100px;" method="POST">
+        <button class="dropbtn">Add Course</button>
+        <div class="dropdown-content">
+            <a id="dja">Django</a>
+            <a id="cpp">C++</a>
+            <a id="netw">Networking</a>
+            <a id="micro">Microprocessor 8085</a>
+            <a id="js">Javascript</a>
+        </div>
+>>>>>>> 1d0c5f3c23f6f64e44f4d91c82dbfcfb9d35c58c
     </div>
-  </div>
-<div   style="position: absolute;top: 100px;" >
-    <table  class="table table-bordered table-striped" id="course" style="color: rgb(0, 0, 0); background-color: aliceblue;">
-        <!-- <thead>
+    <div style="position: absolute;top: 100px;">
+        <table class="table table-bordered table-striped" id="course"
+            style="color: rgb(0, 0, 0); background-color: aliceblue;">
+            <!-- <thead>
             <th>Course Name</th> id="course"
             <th>Course Fee</th>
             <th>Course Teacher</th>
         </thead> -->
-        <thead>
-            <tr>
-                <th>Sno.</th>
-                <th>Course</th>
-                <th>Course Fee</th>
-                <th>Teacher</th>
+            <thead>
+                <tr>
+                    <th>Sno.</th>
+                    <th>Course</th>
+                    <th>Course Fee</th>
+                    <th>Teacher</th>
                     <!-- {%for course in courses%}
                     <li>{{course.courseName}}</li>
                     {% endfor %} -->
-        
-            
-            </tr>
-        </thead>
-    </table>
 
-</div>
-<div  style="position: absolute; top: 5px; left: 100px;" >
-<a style=" color: bisque;" href="{% url 'baseapp:logout'%}">LogOut</a>
-</div>
+
+                </tr>
+            </thead>
+        </table>
+
+    </div>
+    <div style="position: absolute; top: 5px; left: 100px;">
+        <a style=" color: bisque;" href="{% url 'baseapp:logout'%}">LogOut</a>
+    </div>
 </body>
 <script type="text/javascript" src="{{ STATIC_URL }} /static/addcourse.js"></script>
 <script type="text/javascript" src="{{ STATIC_URL }} /static/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="{{ STATIC_URL }} /static/welcome.js"></script>
-

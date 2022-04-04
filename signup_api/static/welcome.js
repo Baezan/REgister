@@ -66,3 +66,95 @@ $(document).ready(function () {
         })
     });
     
+    cpp.addEventListener('click', function postData(){
+
+        url ='http://127.0.0.1:8000/api/course/';
+        data = '{"courseName":"Django","courseFee":"10000","courseTeacher":"Ahtisham Sir","description":"added the course"}'
+        params = {
+            method:"POST",
+            headers: {
+                'Content-Type': 'application/json;odata=verbose'
+                
+            
+    
+                
+              },
+    
+            body: data
+        }
+        fetch(url, params).then(response=> response.json())
+        .then((data) => {
+        
+            console.log(data);
+           
+        })
+    });
+    netw.addEventListener('click', function postData(){
+
+        url ='http://127.0.0.1:8000/api/course/';
+        data = '{"courseName":"Django","courseFee":"10000","courseTeacher":"Ahtisham Sir","description":"added the course"}'
+        params = {
+            method:"POST",
+            headers: {
+                'Content-Type': 'application/json;odata=verbose'
+                
+            
+    
+                
+              },
+    
+            body: data
+        }
+        fetch(url, params).then(response=> response.json())
+        .then((data) => {
+        
+            console.log(data);
+           
+        })
+    });
+    micro.addEventListener('click', function postData(){
+
+        url ='http://127.0.0.1:8000/api/course/';
+        data = '{"courseName":"Django","courseFee":"10000","courseTeacher":"Ahtisham Sir","description":"added the course"}'
+        params = {
+            method:"POST",
+            headers: {
+                'Content-Type': 'application/json;odata=verbose'
+                
+            
+    
+                
+              },
+    
+            body: data
+        }
+        fetch(url, params).then(response=> response.json())
+        .then((data) => {
+        
+            console.log(data);
+           
+        })
+    });
+    js.addEventListener('click', function postData(){
+
+        url ='http://127.0.0.1:8000/api/course/';
+        data = '{"courseName":"Django","courseFee":"10000","courseTeacher":"Ahtisham Sir","description":"added the course"}'
+        params = {
+            method:"POST",
+            headers: {
+                'Content-Type': 'application/json;odata=verbose'
+                
+            
+    
+                
+              },
+    
+            body: data
+        }
+        fetch(url, params).then(response=> response.json())
+        .then((data) => {
+        
+            console.log(data);
+           
+        })
+    });

@@ -16,16 +16,16 @@
 {% comment %} <p>Welcome {{request.user}} {{request.user.id}}</p> {% endcomment %}
 
 
-<div  class="dropdown" style="position: absolute; right: 100px;" method="POST">
+{% comment %} <div  class="dropdown" style="position: absolute; right: 100px;" method="POST">
     <button class="dropbtn">Add Course</button>
     <div class="dropdown-content">
       <a  id="dja">Django</a>
       <a  id="cpp">C++</a>
-      <a  id="netwo" >Networking</a>
+      <a  id="netw" >Networking</a>
       <a  id="micro">Microprocessor 8085</a>
       <a id="js">Javascript</a>
     </div>
-  </div>
+  </div> {% endcomment %}
 <div   style="position: absolute;top: 100px;" >
     <table  class="table table-bordered table-striped" id="course" style="color: rgb(0, 0, 0); background-color: aliceblue;">
         <!-- <thead>

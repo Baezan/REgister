@@ -15,8 +15,9 @@ $(document).ready(function () {
         });
         $('#course').append(temp);
     });
+
     // var csrf_token = $('meta[name="csrf-token"]').attr('content');
-   
+
     // $('#dja').click(function () {
     //     //  var id= $(this).attr('id');
     //     data = {
@@ -41,6 +42,7 @@ $(document).ready(function () {
 
     // });
 });
+
 function getCookie(name) {
     let cookieValue = null;
     if (document.cookie && document.cookie !== '') {
@@ -57,143 +59,175 @@ function getCookie(name) {
     return cookieValue;
 }
 const csrftoken = getCookie('csrftoken');
-//  dja.addEventListener('click', function postData(){
 
-//         url ='http://127.0.0.1:8000/api/course/';
-//         data = '{"courseName":"Django","courseFee":"10000","courseTeacher":"Ahtisham Sir","description":"added the course"}'
-//         params = {
-//             method:"POST",
-//             headers: {
-//                 'Content-Type': 'application/json;odata=verbose',
-//                 'X-CSRFToken': csrftoken
-//               },
-    
-//             body: data
-//         }
-//         fetch(url, params).then(response=> response.json())
-//         .then((data) => {
-        
-//             console.log(data);
-           
-//         })
-//         // $.post( url, function( data ) {
-//         //     console.log(data);
-//         //   });
-//     });
+var url = 'http://127.0.0.1:8000/api/course/';
+dja.addEventListener('click', function postData() {
 
-  dja.addEventListener('click', function postData(){
+    $.getJSON("http://127.0.0.1:8000/api/course/", function (data) {
+        const arr = [];
+        $.each(data, function (key, value) {
+            arr.push(value.courseName);
 
-        url ='http://127.0.0.1:8000/api/course/';
+        });
+        for (var i = 0; i <= arr.length; i++) {
+            if (arr[i] == "Django") {
+                url = 'null';
+                console.log(arr[i], i);
+            }
+        }
+
         data = '{"courseName":"Django","courseFee":"10000","courseTeacher":"Ahtisham Sir","description":"added the course"}'
         params = {
-            method:"POST",
+            method: "POST",
             headers: {
                 'Content-Type': 'application/json;odata=verbose',
                 'X-CSRFToken': csrftoken
-            
-    
-                
-              },
-    
+            },
+
             body: data
         }
-        fetch(url, params).then(response=> response.json())
-        .then((data) => {
-        
-            console.log(data);
-           
-        })
-    });
-    
-    cpp.addEventListener('click', function postData(){
+        fetch(url, params).then(response => response.json())
+            .then((data) => {
 
-        url ='http://127.0.0.1:8000/api/course/';
+                console.log(data);
+
+            })
+    });
+
+
+
+
+});
+
+cpp.addEventListener('click', function postData() {
+    $.getJSON("http://127.0.0.1:8000/api/course/", function (data) {
+        const arr = [];
+        $.each(data, function (key, value) {
+            arr.push(value.courseName);
+
+        });
+        for (var i = 0; i <= arr.length; i++) {
+            if (arr[i] == "C++") {
+                url = 'null';
+                console.log(arr[i], i);
+            }
+        }
+
         data = '{"courseName":"C++","courseFee":"15000","courseTeacher":"Usma Niyaz","description":"added the course"}'
         params = {
-            method:"POST",
+            method: "POST",
             headers: {
                 'Content-Type': 'application/json;odata=verbose',
                 'X-CSRFToken': csrftoken
-            
-    
-                
-              },
-    
-            body: data
-        }
-        fetch(url, params).then(response=> response.json())
-        .then((data) => {
-        
-            console.log(data);
-           
-        })
-    });
-    netw.addEventListener('click', function postData(){
+            },
 
-        url ='http://127.0.0.1:8000/api/course/';
-        data = '{"courseName":"Networking","courseFee":"70000","courseTeacher":"Iqra Altaf","description":"added the course"}'
-        params = {
-            method:"POST",
-            headers: {
-                'Content-Type': 'application/json;odata=verbose',
-                'X-CSRFToken': csrftoken
-            
-    
-                
-              },
-    
             body: data
         }
-        fetch(url, params).then(response=> response.json())
-        .then((data) => {
-        
-            console.log(data);
-           
-        })
-    });
-    micro.addEventListener('click', function postData(){
+        fetch(url, params).then(response => response.json())
+            .then((data) => {
 
-        url ='http://127.0.0.1:8000/api/course/';
-        data = '{"courseName":"Microprocessor 8085","courseFee":"9000","courseTeacher":"Janib Bashir","description":"added the course"}'
-        params = {
-            method:"POST",
-            headers: {
-                'Content-Type': 'application/json;odata=verbose',
-                'X-CSRFToken': csrftoken
-            
-    
-                
-              },
-    
-            body: data
-        }
-        fetch(url, params).then(response=> response.json())
-        .then((data) => {
-        
-            console.log(data);
-           
-        })
-    });
-    js.addEventListener('click', function postData(){
+                console.log(data);
 
-        url ='http://127.0.0.1:8000/api/course/';
-        data = '{"courseName":"Javascript","courseFee":"9000","courseTeacher":"Harry","description":"added the course"}'
-        params = {
-            method:"POST",
-            headers: {
-                'Content-Type': 'application/json;odata=verbose',
-                'X-CSRFToken': csrftoken
-            
-    
-                
-              },
-    
-            body: data
-        }
-        fetch(url, params).then(response=> response.json())
-        .then((data) => {
-        
-            console.log(data);
-           
-        })
+            })
     });
+});
+
+
+netw.addEventListener('click', function postData() {
+    $.getJSON("http://127.0.0.1:8000/api/course/", function (data) {
+        const arr = [];
+        $.each(data, function (key, value) {
+            arr.push(value.courseName);
+
+        });
+        for (var i = 0; i <= arr.length; i++) {
+            if (arr[i] == "Networking") {
+                url = 'null';
+                console.log(arr[i], i);
+            }
+        }
+
+    data = '{"courseName":"Networking","courseFee":"70000","courseTeacher":"Iqra Altaf","description":"added the course"}'
+    params = {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json;odata=verbose',
+            'X-CSRFToken': csrftoken
+        },
+
+        body: data
+    }
+    fetch(url, params).then(response => response.json())
+        .then((data) => {
+
+            console.log(data);
+
+        })
+});
+});
+
+micro.addEventListener('click', function postData() {
+    $.getJSON("http://127.0.0.1:8000/api/course/", function (data) {
+        const arr = [];
+        $.each(data, function (key, value) {
+            arr.push(value.courseName);
+
+        });
+        for (var i = 0; i <= arr.length; i++) {
+            if (arr[i] == "Microprocessor 8085") {
+                url = 'null';
+                console.log(arr[i], i);
+            }
+        }
+
+    data = '{"courseName":"Microprocessor 8085","courseFee":"9000","courseTeacher":"Janib Bashir","description":"added the course"}'
+    params = {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json;odata=verbose',
+            'X-CSRFToken': csrftoken
+        },
+
+        body: data
+    }
+    fetch(url, params).then(response => response.json())
+        .then((data) => {
+
+            console.log(data);
+
+        })
+});
+});
+
+js.addEventListener('click', function postData() {
+    $.getJSON("http://127.0.0.1:8000/api/course/", function (data) {
+        const arr = [];
+        $.each(data, function (key, value) {
+            arr.push(value.courseName);
+
+        });
+        for (var i = 0; i <= arr.length; i++) {
+            if (arr[i] == "Javascript") {
+                url = 'null';
+                console.log(arr[i], i);
+            }
+        }
+
+    data = '{"courseName":"Javascript","courseFee":"9000","courseTeacher":"Harry","description":"added the course"}'
+    params = {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json;odata=verbose',
+            'X-CSRFToken': csrftoken
+        },
+
+        body: data
+    }
+    fetch(url, params).then(response => response.json())
+        .then((data) => {
+
+            console.log(data);
+
+        })
+});
+});

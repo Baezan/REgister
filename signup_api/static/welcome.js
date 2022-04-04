@@ -41,19 +41,31 @@ $(document).ready(function () {
 
     // });
 });
-
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+const csrftoken = getCookie('csrftoken');
  dja.addEventListener('click', function postData(){
 
-        url ='http://127.0.0.1:8000/addcourse/';
+        url ='http://127.0.0.1:8000/api/course/';
         data = '{"courseName":"Django","courseFee":"10000","courseTeacher":"Ahtisham Sir","description":"added the course"}'
         params = {
             method:"POST",
             headers: {
-                'Content-Type': 'application/json,'
-                
-            
-    
-                
+                'Content-Type': 'application/json;odata=verbose',
+                'X-CSRFToken': csrftoken
               },
     
             body: data
@@ -64,5 +76,8 @@ $(document).ready(function () {
             console.log(data);
            
         })
+        // $.post( url, function( data ) {
+        //     console.log(data);
+        //   });
     });
     

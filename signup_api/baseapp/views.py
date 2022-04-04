@@ -39,7 +39,7 @@ def getcourses(request):
     serializer = CourseInstanceSerializer(data,many=True)
     return Response(serializer.data)
 
-@ensure_csrf_cookie
+# @ensure_csrf_cookie
 def LoginPage(request):
     page = 'login'
     if request.user.is_authenticated:
@@ -90,7 +90,7 @@ def register(request):
     return render(request,'baseapp/register_login.html',{})
 
 @login_required(login_url='baseapp:login')
-@ensure_csrf_cookie
+# @ensure_csrf_cookie
 def welcome(request):
     userId = request.user.id
     print(userId)
@@ -102,9 +102,9 @@ def welcome(request):
 # @method_decorator(csrf_exempt, name='dispatch')
 class CourseView(APIView):
 
-    @method_decorator(csrf_exempt)
-    def dispatch(self, request, *args, **kwargs):
-            return super(CourseView, self).dispatch(request, *args, **kwargs)
+    # @method_decorator(csrf_exempt)
+    # def dispatch(self, request, *args, **kwargs):
+    #         return super(CourseView, self).dispatch(request, *args, **kwargs)
 
     def post(self,request):
         userID = request.user.id
@@ -141,7 +141,7 @@ def getCourseNames(request):
 
 
 @api_view(('POST',))
-@csrf_exempt
+# @csrf_exempt
 def postCourse(request):
     userID = request.user.id
     request.data['student'] = userID

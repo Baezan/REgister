@@ -23,7 +23,7 @@ function getData()  {
             var j=1;
             for(var i=0;i<data.length;i++){
                 document.getElementById(j).innerHTML+=
-                "Course Fee = "+data[i].courseFee+"<br/>"+"Teacher = "+ data[i].courseTeacher+"</br>"+"'"+data[i].description+"'"+"<br/>"
+                "Course Fee = "+data[i].courseFee+"<br/>"+"Teacher = "+ data[i].courseTeacher+"</br>"
                 j++;
             }
     

@@ -57,7 +57,31 @@ function getCookie(name) {
     return cookieValue;
 }
 const csrftoken = getCookie('csrftoken');
- dja.addEventListener('click', function postData(){
+//  dja.addEventListener('click', function postData(){
+
+//         url ='http://127.0.0.1:8000/api/course/';
+//         data = '{"courseName":"Django","courseFee":"10000","courseTeacher":"Ahtisham Sir","description":"added the course"}'
+//         params = {
+//             method:"POST",
+//             headers: {
+//                 'Content-Type': 'application/json;odata=verbose',
+//                 'X-CSRFToken': csrftoken
+//               },
+    
+//             body: data
+//         }
+//         fetch(url, params).then(response=> response.json())
+//         .then((data) => {
+        
+//             console.log(data);
+           
+//         })
+//         // $.post( url, function( data ) {
+//         //     console.log(data);
+//         //   });
+//     });
+
+  dja.addEventListener('click', function postData(){
 
         url ='http://127.0.0.1:8000/api/course/';
         data = '{"courseName":"Django","courseFee":"10000","courseTeacher":"Ahtisham Sir","description":"added the course"}'
@@ -66,6 +90,9 @@ const csrftoken = getCookie('csrftoken');
             headers: {
                 'Content-Type': 'application/json;odata=verbose',
                 'X-CSRFToken': csrftoken
+            
+    
+                
               },
     
             body: data
@@ -76,9 +103,6 @@ const csrftoken = getCookie('csrftoken');
             console.log(data);
            
         })
-        // $.post( url, function( data ) {
-        //     console.log(data);
-        //   });
     });
     
     cpp.addEventListener('click', function postData(){

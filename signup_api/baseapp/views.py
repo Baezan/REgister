@@ -24,6 +24,7 @@ def home(request):
     context = {}
     return render(request,'baseapp/home.html',context)
 
+# @ensure_csrf_cookie
 @api_view(('GET',))
 def getcourses(request):
     # data= Courses.objects.all().distinct()
@@ -100,9 +101,10 @@ def welcome(request):
     
 # @method_decorator(csrf_exempt, name='dispatch')
 class CourseView(APIView):
-    # @method_decorator(csrf_exempt)
-    # def dispatch(self, request, *args, **kwargs):
-    #     return super(CourseView, self).dispatch(request, *args, **kwargs)
+
+    @method_decorator(csrf_exempt)
+    def dispatch(self, request, *args, **kwargs):
+            return super(CourseView, self).dispatch(request, *args, **kwargs)
 
     def post(self,request):
         userID = request.user.id
@@ -138,13 +140,13 @@ def getCourseNames(request):
     return Response(serializer.data)
 
 
-# @api_view(('POST',))
-# @csrf_exempt
-# def postCourse(request):
-#     userID = request.user.id
-#     request.data['student'] = userID
-#     data = request.data
-#     serializer = CourseSerializer(data=data)
-#     serializer.is_valid(raise_exception=True)
-#     serializer.save()
-#     return Response(serializer.data)
+@api_view(('POST',))
+@csrf_exempt
+def postCourse(request):
+    userID = request.user.id
+    request.data['student'] = userID
+    data = request.data
+    serializer = CourseSerializer(data=data)
+    serializer.is_valid(raise_exception=True)
+    serializer.save()
+    return Response(serializer.data)

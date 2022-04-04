@@ -44,12 +44,12 @@ $(document).ready(function () {
 
  dja.addEventListener('click', function postData(){
 
-        url ='http://127.0.0.1:8000/api/course/';
+        url ='http://127.0.0.1:8000/addcourse/';
         data = '{"courseName":"Django","courseFee":"10000","courseTeacher":"Ahtisham Sir","description":"added the course"}'
         params = {
             method:"POST",
             headers: {
-                'Content-Type': 'application/json;odata=verbose'
+                'Content-Type': 'application/json,'
                 
             
     
